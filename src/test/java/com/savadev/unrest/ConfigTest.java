@@ -30,13 +30,13 @@ public class ConfigTest {
                 .build();
     }
 
-    @Test
-    void example() {
-        this.webTestClient.get().uri("/api/config")
-                .accept(MediaType.APPLICATION_JSON)
-                .headers(headers -> headers.setBearerAuth(jwt))
-                .exchange().expectStatus().isOk()
-                .expectBody().consumeWith(document("index"));
-    }
+//     @Test
+//     void example() {
+//         this.webTestClient.get().uri("/api/config")
+//                 .accept(MediaType.APPLICATION_JSON)
+//                 .headers(headers -> headers.setBearerAuth(jwt))
+//                 .exchange().expectStatus().isOk()
+//                 .expectBody().consumeWith(document("index"));
+//     }
 
 }

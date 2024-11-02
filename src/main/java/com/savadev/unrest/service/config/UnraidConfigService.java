@@ -4,8 +4,10 @@ import com.savadev.unrest.dao.ini.VarRepository;
 import com.savadev.unrest.domain.config.Config;
 import com.savadev.unrest.domain.config.UnraidConfig;
 import org.springframework.stereotype.Service;
+import java.io.IOException;
 import reactor.core.publisher.Mono;
 
+@Service
 public class UnraidConfigService implements ConfigService {
 
     private final VarRepository repository;
@@ -21,21 +23,26 @@ public class UnraidConfigService implements ConfigService {
     }
 
     @Override
-        public Mono<Void> shutdownServer() {
-            // Implement the logic to shut down the server
-            return Mono.fromRunnable(() -> {
-                // Command to shut down the server
+    public Mono<Void> shutdownServer() {
+        return Mono.fromRunnable(() -> {
+            try {
                 Runtime.getRuntime().exec("shutdown -h now");
-            });
-        }
+            } catch (IOException e) {
+                // Handle the exception, e.g., log it
+                e.printStackTrace();
+            }
+        });
+    }
 
-        @Override
-        public Mono<Void> sleepServer() {
-            // Implement the logic to put the server to sleep
-            return Mono.fromRunnable(() -> {
-                // Command to put the server to sleep
+    @Override
+    public Mono<Void> sleepServer() {
+        return Mono.fromRunnable(() -> {
+            try {
                 Runtime.getRuntime().exec("systemctl suspend");
-            });
-        }
-
+            } catch (IOException e) {
+                // Handle the exception
+                e.printStackTrace();
+            }
+        });
+    }
 }
