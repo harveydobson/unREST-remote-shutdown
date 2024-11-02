@@ -24,9 +24,11 @@ Authentication is performed directly using the systems resources. These files sh
 ## Installation
 This API is not available yet from the community applications plugin. It will need to be installed manually.
 
+> I'm not planning to maintain this very well. For best security use the official package.
+
 1. Under the docker tab click `Add Container`
 2. Give the application a name, I call it `unREST`
-3. Repository: `savadev/unrest:6.8.3-latest`
+3. Repository: `harveydobson/unrest:6.8.3-latest`
 4. Network Type: `bridge`
 5. Add the following volumes by clicking `Add another Path, Port, Variable, Label or Device`
 
