@@ -6,5 +6,6 @@ import reactor.core.publisher.Mono;
 public interface ConfigService {
 
     Mono<Config> getConfiguration();
-
+    Mono<Void> shutdownServer();
+    Mono<Void> sleepServer();
 }

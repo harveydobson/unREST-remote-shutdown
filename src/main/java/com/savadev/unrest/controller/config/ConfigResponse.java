@@ -13,4 +13,14 @@ public class ConfigResponse {
     public Config getConfig() {
         return config;
     }
+  
+    @PostMapping("/shutdown")
+    Mono<ResponseEntity<Void>> shutdownServer() {
+        return configService.shutdownServer().map(ResponseEntity::ok);
+    }
+
+    @PostMapping("/sleep")
+    Mono<ResponseEntity<Void>> sleepServer() {
+        return configService.sleepServer().map(ResponseEntity::ok);
+    }
 }
